@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "argv0:$0"
+pwd
+BUILDUNIXDIR=`pwd`
+
+srcdir=$(echo "$@" | tr ' ' '\n' | grep srcdir | cut -d'=' -f2);
+echo "srcdir:$srcdir"
+
+$srcdir/../dist/configure "$@" --srcdir=$srcdir/../dist
