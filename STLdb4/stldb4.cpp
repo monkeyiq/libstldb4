@@ -31,6 +31,8 @@
 #define BUILDING_STLDB4
 
 #ifdef MAC
+// This is not so good, <errno.h> picks up the one from db4 on osx
+#define _SYS_ERRNO_H_ 1
 extern int errno;
 #endif
 
