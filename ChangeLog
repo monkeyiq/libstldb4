@@ -1,0 +1,341 @@
+(0.4.100)
+
+2009-01-10  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Released 0.4.99
+	  updated moveCursorNextDup() to return end() when no more duplicates exist,
+	  added new Database::makeSecondaryIndex() that takes fh_env as well.
+	
+(0.4.99)
+	
+2008-05-15  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* added new Database::makeSecondaryIndex() that takes fh_env as well.
+	* updated moveCursorNextDup() to return end() when no more duplicates exist
+
+(0.4.7)
+
+2007-09-15  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Added ability to set prefix function (commented out again)
+	
+2007-02-12  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Released 0.4.6
+	  Fixed a memory allocation bug in find_partial()
+	
+(0.4.6)
+
+2007-02-12  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Fixed a memory allocation bug in find_partial()
+
+2006-10-26  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Released 0.4.5
+	  Fixed a potential bug in ~Transaction(),
+	  Support for using a Loki functor as the database ordering function,
+	  Transaction::setDefaultDestructionIsAbort() for RAII design pattern,
+	  Added offsetNullTerminatedSecIdxFunction() for secondary indexing
+
+(0.4.5)
+
+2006-10-18  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Support for using a Loki functor as the database ordering function
+
+	* Added new Transaction::setDefaultDestructionIsAbort() to set
+	  the default action to abort in ~Transaction for better RAII support.
+
+	* Fixed a potential bug in ~Transaction() handling
+
+2006-10-17  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Added offsetNullTerminatedSecIdxFunction
+	
+2006-10-13  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Released 0.4.3
+	  New overloaded methods for read_only db access
+
+(0.4.3)
+
+2006-03-22  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Released 0.4.2
+	  Some minor cleanups for gcc 4.1
+	
+(0.4.2)
+
+2006-03-20  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Some minor cleanups for gcc 4.1
+
+2006-01-11  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Released 0.4.1
+	  Patch from Mike Frysinger to respect DESTDIR duing make install,
+	  removed some debug output in Database::getWithDefault()
+
+(0.4.1) 
+
+2006-01-11  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Patch from Mike Frysinger (vapier) for make install DESTDIR=/blah
+
+2005-09-07  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* removed some debug output in Database::getWithDefault()
+
+2005-09-05  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Released 0.4.0:
+	Made STLport use optional, cleanups for openmode and other arguments 
+	for better standard compliance.
+	
+
+(0.4.0)
+
+2005-09-04  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Made STLport use optional.
+	* some minor cleanups for openmode etc for better standard compliance.
+
+2005-05-03  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.15 Changelog:
+	Added a fix for AMD64 compilation. Changed libtool -version-info to -release.
+	Small gcc 4.x fix. lower_bound() behaves in a STL compliant manner when a 
+	custom bt_compare is set and the key is less than all in the database.
+	DB_RDONLY is now passed to db4 from Database() constructors properly.
+	New overloaded operator[]() for long key values.
+	Fixed a bug in DatabaseIterator::getRecNumber() on secondary indexes
+	to RECNO files.
+	
+(0.3.15)
+
+2005-04-30  monkeyiq  <monkeyiq@users.sourceforge.net>
+	* if a custom compare has been set then lower_bound() will now return
+	  begin() for items which should preceed all others in the database
+	
+	* better support for DB_RDONLY in Database() constructors
+	
+	* added overloaded operator[]() for long key values
+
+	* fixed a bug in DatabaseIterator::getRecNumber() on secondary indexes
+	  to RECNO files
+	
+2005-03-19  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Fix for DatabaseHandle::operator[] and more recent gcc4.x prereleases.
+	
+	* Changed libtool -version-info to -release
+
+	* Added a fix for A64 compilation
+
+2005-01-26  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.13 Changelog:
+	  Fixed some include paths in test suite.
+
+(0.3.13)
+
+2005-01-26  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.12 ChangeLog for 0.3.12:
+	  Fix for stlport detection reenabling probing after
+	  not finding stlport via pkg-config
+
+(0.3.12)
+
+2004-12-26  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.11
+	Added optional gcc hidden symbol support, 
+	fixed a bug in the path for stldbraw.h
+
+(0.3.11)
+
+2004-12-17  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* gcc hidden symbol support
+
+2004-12-17  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* fixed a bug in the path for stldbraw.h
+
+2004-10-23  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.10
+
+(0.3.10)
+	
+2004-10-20  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Database::getWithDefault() now sets data to def if the key
+	  is not already in the database.
+
+2004-10-01  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.9
+	
+	
+(0.3.9)
+
+2004-09-23  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* exposed set_cachesize
+
+	* default cachesize for databases without environment is 
+	  now 1Mb instead of what db4 defaults to (256k).
+
+	* --enable-wrapdebug is no longer forced
+	
+
+(0.3.8)
+
+2004-03-19  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* 0.3.7 released
+	
+(0.3.7)
+
+2004-03-19  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Removed some binary files which were accidently in the dist tarball.
+	  Made configure demand a private prefix for embedded db4 and a few other options.
+
+	
+2004-02-15  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* 0.3.6 released
+
+(0.3.6)
+
+2004-02-15  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* build no longer changes prefix in configure.in. Moved to using 
+	  common M4 macros for configure time detection.
+	
+2004-01-26  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* 0.3.5 released
+	
+(0.3.5)
+
+2004-01-26  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* db-4.1.25/dist contained a partially built db4 distribution.
+	  These object files should not have been part of the distribution.
+
+2003-09-20  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* 0.3.4 released
+
+(0.3.4)
+
+2003-09-19  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Announcement: Added close() method so that databases can be explicitly
+	  closed and exceptions handled before the destructor call. Default null
+	  environment doesn't implicitly create a transacted environment as a side
+	  effect anymore. Added getWithDefault() to allow getting a value with a 
+	  defaulted value on error.
+	
+	* made the default environment not implicitly actually
+	  tell db4 to setup transactions even though it shouldn't
+
+	* added close() method that can throw. dtor calls close()
+	  which is impotent if the db is already closed but can
+	  throw if the db is open and closing fails.
+	
+2003-09-06  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* added getWithDefault()
+	
+2003-08-31  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.3
+	
+(0.3.3)
+2003-08-31  monkeyiq  <monkeyiq@users.sourceforge.net>
+	* Changed default environment to be a null environment.
+	  Added methods to change the default env to a more powerful one in
+	  STLdb4::Environment
+
+2003-08-30  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Changed default environment to be just mpool and create.
+	http://www.sleepycat.com/docs/ref/env/region.html
+	Should provide reasonable protection from multiple instances of the
+	same app by default but not threading by default.
+
+	* Most open/create methods now also accept file:// URLs
+	
+2003-08-20  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Added set_pagesize() to Database class
+
+	* Added dbException::get_errno() to get access to the db4 error code 
+	  that caused the exception to be thrown
+
+	* Added non creation oriented Database constructors that only open existing db files.
+
+
+(0.3.2)
+
+2003-08-02  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* added DatabaseIterator::moveCursorNextDup()
+	
+	* fixed erase( iterator ) to work using c_del on the cursor itself
+	
+	* new find() method for recno_t access
+	
+	* new getRecNumber() method on db iterators
+	
+	* Fixed segv in getPrimaryKey()
+	
+	* Fixed typo with getParimaryKey() to getPrimaryKey() method
+
+	
+	
+	Fri Jun 13, 2003 @  2:23 PM
+	AdvanceFunctorBytes() now handles overflow.
+
+(0.3.1)
+	Tue Jun 10, 2003 @  2:07 PM
+	Fixed a problem with using db[k] = v; expressions creating
+	many keys for the one logical assignment when DUP was allowed
+	in the database. Ported to db-4.1 which is now included in the
+	tarball distro.
+	
+	Mon May 19, 2003 @ 12:01 AM
+	Changes for rh9 and distro in configure.in
+	Converted to using libsigc++ 1.2
+	
+	Wed May 14, 2003 @  3:37 PM
+	Added support for secondary indexes
+	
+	Mon May 12, 2003 @  5:27 PM
+	allow the default environment flags to be settable in stldb4 so we can use
+	a non-transacted db if we like.
+
+	Sun May 11, 2003 @ 11:59 PM
+	Improved configure.in checks for loki and ferrisstreams
+	
+	Fri May  9, 2003 @  5:36 PM
+	Added support for recno and queue databases with append() and overloeded
+	set() methods.
+	
+	Wed May  7, 2003 @  2:40 PM
+	Database now keeps a reference to its environment to force
+	correct distruction order.
+	m_implicitTransaction is set to 0 at Database() time.
+	
+	Tue May  6, 2003 @  1:37 PM
+	added set_bt_compare() and some default compare functions
+	
+(0.3.0)
+	Mon May  5, 2003 @  9:28 PM
+	Initial public release.

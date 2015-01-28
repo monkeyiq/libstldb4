@@ -1,0 +1,99 @@
+Version: @STLDB4_VERSION@
+Release: 60031
+Name:    stldb4
+Summary: C++ Wrapper for the sleepycat db4 library
+License: GPL
+Group: System Environment/Libraries
+Source: http://prdownloads.sourceforge.net/witme/%{name}-%{version}.tar.bz2
+BuildRoot: %{_tmppath}/%{name}-root
+Packager: Ben Martin <monkeyiq@users.sourceforge.net>
+URL: http://sourceforge.net/project/showfiles.php?group_id=16036
+Requires: ferrisstreams >= 0.5.0
+Requires: popt >= 1.7
+BuildRequires: ferrisstreams >= 0.5.0
+BuildRequires: glib2-devel >= 2.0.0
+BuildRequires: popt-devel
+BuildRequires: gcc-c++
+BuildRequires: libsigc++2-devel
+BuildRequires: pkgconfig
+BuildRequires: ferrisloki-devel
+Provides: libstldb4-04:0:0.so
+
+%description
+C++ Wrapper for the sleepycat db4 library
+These are the main design points:
+
+1) Using STL in the API where sensible. For example, to
+   read a range of keys an STL like iterator object should
+   be used.
+2) Allowing Standard IOStreams for data access where sensible,
+   for example getting the value of a key should be able to use 
+   an istream interface to allow simple partial value retreival.
+3) move transaction parameter to be last optional param 
+   or provde two versions of the same method for trans/nontrans
+4) Modification of API to use more standard types.
+5) Use of operator overloading to allow quick and dirty coding
+   mydb[ "key" ] = "value"; to set and 
+   cerr << mydb["key"] << endl; to read values
+
+
+
+%prep
+
+%setup -q
+
+%build
+
+PWD=`pwd`
+echo "PWD:$PWD"
+# %xxconfigure --enable-rpc --with-uniquename=stldb4 --enable-hiddensymbols --with-pic --disable-stlport --with-sigcxx-2x=yes
+
+./configure --enable-rpc --with-uniquename=stldb4 --enable-hiddensymbols --with-pic --disable-stlport --with-sigcxx-2x=yes --prefix=/usr
+
+if [ "$SMP" != "" ]; then
+  (make "MAKE=make -k -j $SMP"; exit 0)
+  make clean all
+else
+  make clean all
+fi
+
+# if [ ! -f configure ]; then
+# 	CFLAGS="$RPM_OPT_FLAGS" ./autogen.sh --prefix=%{prefix} --sysconfdir=%{sysconfdir} --enable-rpc --with-uniquename=stldb4 
+# else
+# 	CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{prefix} --sysconfdir=%{sysconfdir} --enable-rpc --with-uniquename=stldb4 --enable-wrapdebug 
+# fi
+
+
+# if [ "$SMP" != "" ]; then
+#   (make "MAKE=make -k -j $SMP"; exit 0)
+#   make
+# else
+#   make
+# fi
+
+%install
+%makeinstall
+rm -f $RPM_BUILD_ROOT/%{_libdir}/libstldb4.la
+rm -f $RPM_BUILD_ROOT/%{prefix}/lib/libstldb4.la
+
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
+%files
+%defattr(-,root,root,0755)
+%doc AUTHORS README COPYING ChangeLog INSTALL
+%{_bindir}/*
+%{_libdir}/*so
+# %{_libdir}/debug/
+%{_libdir}/pkgconfig/*pc
+%{_includedir}/*
+
+
+%changelog
+* Sun May 4 2003 Ben Martin
+- Created 

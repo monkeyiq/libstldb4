@@ -1,0 +1,114 @@
+#   Copyright (C) 2003 Ben Martin
+# Based on calc.exp which is GPL and Copyright (C) 1997 - 2001 Free Software Foundation, Inc.
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  
+
+set timeout 30
+#
+# expectations that clean up in case of error. Note that `$test' is
+# a purely local variable.
+#
+# The first of these is used to match any bad responses, and resynchronise
+# things by finding a prompt. The second is a timeout error, and shouldn't
+# ever be triggered.
+#
+expect_after {
+	-re "\[^\n\r\]*$prompt$" {
+		fail "$test (bad match)"
+		if { $verbose > 0 } {
+			regexp ".*\r\n(\[^\r\n\]+)(\[\r\n\])+$prompt$" \
+						$expect_out(buffer) "" output
+			send_user "\tUnmatched output: \"$output\"\n"
+		}
+	}
+	timeout {
+		fail "$test (timeout)"
+	}
+}
+
+################################################################################
+################################################################################
+################################################################################
+################################################################################
+################################################################################
+# Fundamental operations like set/get
+################################################################################
+################################################################################
+################################################################################
+
+proc run_app_test { EXENAME } {
+    global EXBASE
+    global SDATA
+    global verbose
+    
+    set FUNCNAME "$EXENAME"
+    if { $verbose > 1 } {
+	send_user "Testing $FUNCNAME ...\n"
+    }
+    
+    system rm -f "/tmp/play.db" "/tmp/play1.db" "/tmp/play2.db" "/tmp/__db.*" "/tmp/log.00000000*"
+    spawn nice "$EXBASE/testsuite/$EXENAME"
+    expect {
+	-re "Success" { pass "for $FUNCNAME "; return } 
+	-re "ERROR" { fail "Exception occured during $FUNCNAME test"; }
+	timeout { fail "Failed during $FUNCNAME test (timeout)"; }
+    }
+    fail "problem with $FUNCNAME test"
+}
+
+proc run_fundamental_suite {} {
+    global EXBASE
+    global SDATA
+    global verbose
+    
+    if { $verbose > 1 } {
+	send_user "Testing fundamental operations...\n"
+    }
+
+    run_app_test "ut_setget"
+    run_app_test "ut_find"
+    run_app_test "ut_forwarditerate"
+    run_app_test "ut_overload"
+    run_app_test "ut_readstream"
+    run_app_test "ut_writestream"
+    run_app_test "ut_readwriteseek"
+    run_app_test "ut_partial_lookup"
+    run_app_test "ut_multidata"
+    run_app_test "ut_trans"
+    run_app_test "ut_trans_manydb"
+    run_app_test "ut_reverseiterate"
+    run_app_test "ut_partial_range_lookup"
+    run_app_test "ut_advancef"
+
+}
+
+################################################################################
+################################################################################
+################################################################################
+#
+# Here we go
+#
+################################################################################
+################################################################################
+################################################################################
+
+proc run_all {} {
+    run_fundamental_suite
+}
+
+run_all
+
+
+

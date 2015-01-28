@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: stldb4
+Description: C++ wrapper for db4 library
+Version: @VERSION@
+Requires: @REQUIREMENTS@
+Libs: -L${libdir} -lstldb4 @STLPORT_LIBS@ @LOKI_LIBS@  @FSTREAM_LIBS@ -lpthread
+Cflags: -I${includedir}/STLdb4 @STLPORT_CFLAGS@  @LOKI_CFLAGS@ @FSTREAM_CFLAGS@ 
+
+
