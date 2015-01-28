@@ -40,8 +40,8 @@
 #ifndef _SYS_ERRNO_H_
 #define _SYS_ERRNO_H_
 
-#undef	errno
-#define	errno	DB_GLOBAL(db_errno)
+//#undef	errno
+//#define	errno	DB_GLOBAL(db_errno)
 
 #define	EPERM		1		/* Operation not permitted */
 #define	ENOENT		2		/* No such file or directory */
