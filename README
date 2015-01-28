@@ -1,0 +1,41 @@
+This is a C++ wrapper for the sleepycat db4 database.
+
+Although sleepycat provide a C++ wrapper I was not happy
+with it. This library aims to provide a better interface
+by using more C++ features.
+
+These are the main design points:
+
+1) Using STL in the API where sensible. For example, to
+   read a range of keys an STL like iterator object should
+   be used.
+2) Allowing Standard IOStreams for data access where sensible,
+   for example getting the value of a key should be able to use 
+   an istream interface to allow simple partial value retreival.
+3) move transaction parameter to be last optional param 
+   or provde two versions of the same method for trans/nontrans
+4) Modification of API to use more standard types.
+5) Use of operator overloading to allow quick and dirty coding
+   mydb[ "key" ] = "value"; to set and 
+   cerr << mydb["key"] << endl; to read values
+
+You will of course still require the C db4 library to use this 
+wrapper.
+
+Dependancies;
+* ferrisloki
+* a std::string class that can have its contents written to via
+  the pointer returned from string::data(). This could be changed
+  but I wanted to preserve the speed of a string::resize() followed
+  by getting db4 to load data directly into the string.
+
+Can notice and take advantage of;
+stlport
+
+As of version 0.3.1 the tarball includes the db4 library source aswell.
+Sleepycat recommend projects do this and the redhat9 db4 rpms have
+issues.
+
+You might need to use --with-pic configure option on A64 machines
+
+

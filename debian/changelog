@@ -1,0 +1,25 @@
+stldb4 (0.4.99+nmu1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Freedombox update 
+
+ -- root <ben@freedombox>  Sat, 25 Feb 2012 14:54:55 +1000
+
+stldb4 (0.4.99) unstable; urgency=low
+
+  * automated release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- root <monkeyiq@users.sf.net>  Mon, 31 Dec 2007 18:30:42 +1000
+
+stldb4 (0.4.96) unstable; urgency=low
+
+  * automated release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- root <monkeyiq@users.sf.net>  Mon, 31 Dec 2007 18:30:42 +1000
+
+stldb4 (0.4.91-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- root <monkeyiq@users.sf.net>  Mon, 26 Nov 2007 09:05:09 +1000
+
