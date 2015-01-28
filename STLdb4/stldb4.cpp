@@ -30,6 +30,11 @@
 
 #define BUILDING_STLDB4
 
+#ifdef MAC
+extern int errno;
+#endif
+
+
 #include <STLdb4/stldb4.hh>
 #include <FerrisLoki/Extensions.hh>
 #include <FerrisStreams/Streams.hh>
