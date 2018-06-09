@@ -34,8 +34,9 @@
 // This is not so good, <errno.h> picks up the one from db4 on osx
 #define _SYS_ERRNO_H_ 1
 extern int errno;
+#else
+#include <errno.h>
 #endif
-
 
 #include <STLdb4/stldb4.hh>
 #include <FerrisLoki/Extensions.hh>
@@ -43,8 +44,6 @@ extern int errno;
 
 #include <sigc++/sigc++.h>
 #include <sigc++/slot.h>
-#include <sigc++/object.h>
-#include <sigc++/object_slot.h>
 
 // #ifndef STLDB4_DONT_USE_GLIB
 // // only needed for gint32, gint64 etc.
