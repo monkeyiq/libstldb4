@@ -81,6 +81,8 @@ runtest_with_one_entry()
     string k = "harry";
     string v = "sally";
 
+//    db["aaa"] = "av";    
+//    db["zzz"] = "zv";    
     db[ k ] = v;
     db->sync();
 
@@ -89,7 +91,10 @@ runtest_with_one_entry()
 
     cerr << "getting upper_bound()" << endl;
     Database::iterator ub = db->upper_bound( k );
-    
+
+//    cerr << "lb: " << lb->second << endl;
+//    cerr << "ub: " << ub->second << endl;
+
     cerr << "lb==end():" << (lb == db->end()) << endl;
     cerr << "ub==end():" << (ub == db->end()) << endl;
     cerr << "lb==ub:" << (lb==ub) << endl;

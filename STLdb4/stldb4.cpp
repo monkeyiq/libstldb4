@@ -1598,14 +1598,17 @@ namespace STLdb4
     {
         t = freshenTransaction( t );
         Database::iterator ret = lower_bound( key, keylen, t );
-        
-        int rc = 0;
-        while( rc != DB_NOTFOUND )
-        {
-            rc = ret.moveCursor( DB_NEXT_DUP );
-        }
 
-        ++ret;
+        int rc = ret.moveCursor( DB_NEXT_NODUP );
+
+        
+        // int rc = 0;
+        // while( rc != DB_NOTFOUND )
+        // {
+        //     rc = ret.moveCursor( DB_NEXT_DUP );
+        // }
+
+        // ret++;
         return ret;
     }
 
