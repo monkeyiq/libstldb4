@@ -94,3 +94,17 @@ debian/watch.ex
 /testsuite/ut_trans
 /testsuite/ut_trans_manydb
 /testsuite/ut_writestream
+*.lo
+*.o
+*.la
+.deps
+.libs
+/config.h
+/config.log
+/config.status
+db-4.6.21/build_unix/*
+db-4.6.21/dist/*
+/libtool
+/stamp-h1
+/stldb4-config
+
