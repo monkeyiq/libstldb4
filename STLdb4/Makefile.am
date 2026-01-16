@@ -12,7 +12,6 @@ LIBS_ALL      = $(LIBS_EXTRA)
 CFLAGS_ALL    = $(CFLAGS_EXTRA)
 
 INCLUDES	     = \
-	@STLPORT_CFLAGS@                                \
 	-I$(DB4_PATH)                                   \
 	-I. 						\
 	-I$(top_srcdir)/STLdb4  			\

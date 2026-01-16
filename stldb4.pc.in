@@ -7,7 +7,7 @@ Name: stldb4
 Description: C++ wrapper for db4 library
 Version: @VERSION@
 Requires: @REQUIREMENTS@
-Libs: -L${libdir} -lstldb4 @STLPORT_LIBS@ @LOKI_LIBS@  @FSTREAM_LIBS@ -lpthread
-Cflags: -I${includedir}/STLdb4 @STLPORT_CFLAGS@  @LOKI_CFLAGS@ @FSTREAM_CFLAGS@ 
+Libs: -L${libdir} -lstldb4  @LOKI_LIBS@  @FSTREAM_LIBS@ -lpthread
+Cflags: -I${includedir}/STLdb4   @LOKI_CFLAGS@ @FSTREAM_CFLAGS@ 
 
 

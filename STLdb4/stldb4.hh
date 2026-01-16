@@ -419,7 +419,7 @@ namespace STLdb4
          *
          * pointer the the transaction, bool on if the commit or abort was successful
          */
-        typedef sigc::signal2< void, fh_trans, bool > Commit_Sig_t;
+        typedef sigc::signal< void (fh_trans, bool)> Commit_Sig_t;
         Commit_Sig_t& getCommitSig() 
             { return Commit_Sig; }
         
@@ -430,7 +430,7 @@ namespace STLdb4
          *
          * pointer the the transaction, bool on if the abort was successful
          */
-        typedef sigc::signal2< void, fh_trans, bool > Abort_Sig_t;
+        typedef sigc::signal< void ( fh_trans, bool ) > Abort_Sig_t;
         Abort_Sig_t& getAbortSig()
             { return Abort_Sig; }
         

@@ -2281,7 +2281,9 @@ namespace STLdb4
                 
                 m_iter.debug();
                 typedef typename _Base::write_out_given_data_functor_t f_t;
-                f_t f = f_t( this, &_Self::my_write_out_given_data );
+                f_t f( std::bind(
+                           std::mem_fn(&_Self::my_write_out_given_data), this, std::placeholders::_1, std::placeholders::_2));
+                
                 _Base::setWriteOutGivenDataFunctor( f );
             }
         virtual ~db4_basic_streambuf()
